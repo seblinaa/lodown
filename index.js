@@ -4,8 +4,12 @@
 
 /**
  * each: Designed to loop over a collection, Array or Object, and applies the action Function to each value in the collection.
+ * 
  * @param {Array or Object} collection: The collection over which to iterate.
+ * 
  * @param {Function} action: The Function to be applied to each value in the collection
+ * 
+ * @returns: each element of the list
  */
 function each(collection, action) {
     if(Array.isArray(collection)) {
@@ -41,7 +45,7 @@ module.exports.identity = identity;
 * 
 * @param {Array, Number, Boolean, Undefined, String} anything: Any value
 * 
-* @returns {String}: returns a string with the data type
+* @returns: returns a string with the data type
 * 
 * 
 */
@@ -64,7 +68,7 @@ module.exports.typeOf = typeOf;
 * 
 * @param {number}: a place holder for a number
 * 
-* @returns the first number items in the array
+* @returns: the first number items in the array
 * 
 */
 function first(array, number) {
@@ -83,11 +87,11 @@ module.exports.first = first;
 * 
 * if there was no number or if it wasn't given, it will return just the last element
 * 
-* else return the last number items in the array
-* 
 * @param {Array}: a place holder for an array
 * 
 * @param {Number}: a place holder for a number
+* 
+* @returns the last number items in the array
 * 
 
 */
@@ -106,9 +110,12 @@ module.exports.last = last;
 
 /**
 * indexOf: designed to return the index of the first occurring value
-* if the value isn't in the array, it's going to return -1
+* 
 * @param {array}: a place holder for an array
+* 
 * @param {value}: a place holder for any value
+* 
+* @returns: -1, if the value isn't in the array, 
 
 */
 function indexOf(array, value) {
@@ -124,9 +131,13 @@ function indexOf(array, value) {
 module.exports.indexOf = indexOf;
 
 /**
-* contains: designed to return true if the array contains value, false if not
+* contains: designed to see if a value is present in a list
+* 
 * @param {array}: a place holder for an array
+* 
 * @param {value}: a place holder for any value
+* 
+* @returns: true if the array contains value, false if not
 */
 
 function contains(array, value) {
@@ -138,8 +149,12 @@ module.exports.contains = contains;
 
 /**
 * unique: designed to give a duplicate free version of the array
+* 
 * @param {array}: a place holder for an array
+* 
 * loops through the array and gives new array with no duplicates
+* 
+* @returns an array of unique elements.
 */
 
 function unique(array){
@@ -160,10 +175,17 @@ for(var i = 0; i < array.length; i++){
 module.exports.unique = unique;
 
 /**
-* filter: designed to look through each value in a list and return an array of all the values that pass a truth
+* filter: designed to look through each value in a list 
+* 
 * @param {array}: a place holder for an array
-* @param {function}: is a predicate, to test each element of the array. Return true to keep the element, false otherwise. (action(element, index, array) 
+* 
+* @param {function}: is a predicate, to test each element of the array. 
+* 
+* Return true to keep the element, false otherwise. (action(element, index, array) 
+* 
 * loops through the array and filters out the values and puts them into a new array
+* 
+* @returns: an array of all the values that pass a truth
 */
 
 function filter(array, action){
@@ -182,10 +204,16 @@ module.exports.filter = filter;
 
 
 /**
-* reject: returns the values in list without the elements that the truth test (predicate) passes.
+* reject: used to give the answer which does not match with the given condition
+* 
 * @param {array}: a place holder for an array
+* 
 * @param {function}: the function invoked per iteration. 
+* 
 * oppositie of _.filter, loops through the array and returns the rejected values of the array
+* 
+* @returns: the values in list without the elements that the truth test (predicate) passes.
+* 
 */
 
 function reject (array, func) {
@@ -202,9 +230,14 @@ module.exports.reject = reject;
 
 /**
 * partition: creates an array of elements split into two groups, the first of which contains elements that return true
+* 
 * the second of contains elements test returns false
+* 
 * @param {array}: a place holder for an array, the collection to iterate over
+* 
 * @param {function}: the function invoked per iteration. 
+* 
+* @returns: two arrays.
 */
 
 function partition(array, test){
@@ -229,9 +262,15 @@ function partition(array, test){
 module.exports.partition = partition;
 
 /**
-* map: creates an array of values by running each element in collection thru function 
+* map: used to produce a new array of values by mapping each value in list through transformation function
+* 
 * @param {collection}: a place holder for an array or an object
+* 
 * @param {function}: the function invoked per iteration. 
+* 
+* displays the result as a list on the console
+* 
+* @returns: an array of values by running each element in collection thru function 
 */
 
 function map(collection, func) {
@@ -250,8 +289,12 @@ module.exports.map = map;
 
 /**
 * pluck: designed to extract a list of a given property 
+* 
 * @param {array}: a place holder for an array or an object
+* 
 * @param {property}: placeholder for any given property in an array
+* 
+* @returns: an array of that property’s detail which we need to extract
 */
 
 function pluck(array, property){
@@ -268,9 +311,14 @@ module.exports.pluck = pluck;
 
 /**
 * every: used to test all the elements of the list can pass the given test
-* @returns true if all of the values in the list pass the truth test
+* 
 * @param {collection}: a place holder for an array or an object
+* 
 * @param {test}: callback function to test for each element, taking three arguments
+* 
+* @returns true if all of the values in the list pass the truth test (when every element of the list fulfills the given condition) 
+* 
+* @returns ‘false’ (when at least one element does not fulfill the condition)
 */
 
 function every(collection, test){
@@ -289,12 +337,22 @@ module.exports.every = every;
 
 /**
 * some: used to find whether any value in the given list matches the given condition or not
+* 
 * @param {collection}: a place holder for an array or an object
-* @param {test}: callback function to test for each element, taking three arguments
+* 
+* @param {test}: callback function to >TEST< for each element, taking three arguments
+* 
+* The >TEST< is invoked with three arguments: (value, index|key, collection).
+* 
 * If at least one value satisfies this condition then the output will be true. 
-* When none of the values matches then the output will be false.
+* 
+* When NONE of the values matches then the output will be false.
+* 
 * loop is stopped once test returns false. 
-* The test is invoked with three arguments: (value, index|key, collection).
+* 
+* @returns value which is either true (when at least one element of the list fulfills the given condition) 
+* 
+* @returns false (when none of the elements fulfill the condition).
 */
 
 function some(collection, test){
@@ -313,14 +371,24 @@ module.exports.some = some;
 
 /**
 * reduce: reduces collection to a value which is the accumulated result of running each element in collection thru function
-* boils down a list of values into a single value.
+* 
+* boils down a list of values into a single value
+* 
 * where each successive invocation is supplied the return value of the previous
+* 
 * @param {array}: a place holder for an array 
+* 
 * @param {function}: the function invoked per iteration, taking 4 arguments 
+* 
 * @param {seed}: the initial value
+* 
 * The function is passed four arguments: the seed, then the value and index (or key) of the function, and finally a reference to the entire array.
+* 
 * If no seed is passed to the initial invocation of reduce, the function is not invoked on the first element of the list. 
+* 
 * The first element is instead passed as the seed in the invocation of the function on the next element in the list.
+* 
+* @returns the value of the last iteration is returned by the _.reduce() function
 */
 
 function reduce(array, func, seed){
@@ -344,11 +412,21 @@ module.exports.reduce = reduce;
 
 /**
 * extend: copies every property of the source objects into the first object
+* 
 * @param {object1}: the destination object
+* 
 * @param {...args}: the source objects
+* 
 * iterates over own and inherited source properties
+* 
 * objects will be copied by using reference, not duplicated.
+* 
+* @returns a copy of all the properties of the source objects over the destination object
+* 
+* @returns the destination object
+* 
 * @returns object in-order, so the last source will override properties of the same name in previous arguments.
+* 
 */
 
 function extend(object1, ...args) {
